@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>VoiceInk (self-built)</title>
+    <item>
+      <title>VoiceInk 2.21 (c09cc1f)</title>
+      <pubDate>Fri, 09 Oct 2026 15:52:52 +0000</pubDate>
+      <sparkle:version>202610091517</sparkle:version>
+      <sparkle:shortVersionString>2.21 (c09cc1f)</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-c09cc1f</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (c09cc1f)</h3><ul>
+<li>Limit diagnostic log exports to the last 30 minutes (c09cc1f)</li>
+<li>add onboarding skip and prioritize default model selection (d6960f3)</li>
+<li>Play custom recording sounds at full volume (880502b)</li>
+<li>Fix Return-to-send after custom command delivery (d4d718b)</li>
+<li>Add AssemblyAI Universal 3.6 Pro support (4798ce0)</li>
+<li>Add ElevenLabs Scribe V2 Medical support (f657a78)</li>
+<li>Embed Swift standard libraries in app builds (0206b60)</li>
+<li>Start diagnostic session at launch (e8f4dd0)</li>
+<li>Ensure Parakeet models include required VAD files (7fdc5c3)</li>
+<li>Bump version to 2.21 (36abef9)</li>
+<li>Improve history playback accessibility and filter enhancement errors (44d3013)</li>
+<li>Unify History and Quick History UI (76fa8be)</li>
+<li>Fix Insights issues and remove productivity chart (3d14219)</li>
+<li>Refine Insights design and simplify shared components (7881e3a)</li>
+<li>Update enhancement defaults and AI model selections (ba16d14)</li>
+<li>Add Parakeet Ultra support (593fadb)</li>
+<li>Add voice activity detection to FluidAudio transcription (6985c4b)</li>
+<li>Fix playback and mute restoration after recording (af772a8)</li>
+<li>Reuse DictionaryPill for vocabulary and replacement chips (2ead93e)</li>
+<li>Unify dictionary pills and merge replacement rules (d217463)</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-c09cc1f/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="3PeMA5h0bGAiZUHcfk8VjROhC8WukTFUM8ZpEe+4zNVrhYCrcSZIG9HmEydztHfShXFYoRMnf/2GGS4tv7xCDQ==" length="84954271"/>
+    </item>
+  </channel>
+</rss>
