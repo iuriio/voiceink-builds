@@ -13,7 +13,8 @@ import SystemConfiguration
 ///
 /// Every section of the file is last-writer-wins on its own: a Mac uploads a section when its local copy
 /// changed since the last sync, and applies a section when another Mac uploaded a newer revision.
-/// API keys are encrypted with a passphrase that never leaves the Mac (it is kept in the local Keychain).
+/// API keys are stored as-is in the sync folder, protected by the iCloud account like every other section,
+/// so a new Mac receives them without any setup. They are merged, never removed, across Macs.
 @MainActor
 final class ICloudSyncService: ObservableObject {
     static let shared = ICloudSyncService()
@@ -59,27 +60,32 @@ final class ICloudSyncService: ObservableObject {
     }
 
     @Published private(set) var isEnabled: Bool
-    @Published private(set) var hasPassphrase: Bool
     @Published private(set) var isSyncing = false
     @Published private(set) var lastSyncDate: Date?
     @Published private(set) var errorMessage: String?
-    @Published private(set) var apiKeysMessage: String?
     @Published private(set) var needsRelaunch = false
 
     private let logger = Logger(subsystem: "com.prakashjoshipax.voiceink", category: "ICloudSync")
     private let defaults = UserDefaults.standard
     private var dependencies: Dependencies?
     private var timer: Timer?
-    private var activationObserver: NSObjectProtocol?
+    private var keyChangeObserver: NSObjectProtocol?
+    private var folderWatcher: DispatchSourceFileSystemObject?
+    private var pendingSync: Task<Void, Never>?
     private var syncAgain = false
 
-    private static let syncInterval: TimeInterval = 20
+    /// No polling: sync runs at launch, on "Sync Now", when another Mac changes the sync folder and when
+    /// an API key changes. This slow timer only picks up other local settings changes.
+    private static let fallbackSyncInterval: TimeInterval = 6 * 60 * 60
+    /// Groups bursts of folder events and key edits into a single sync.
+    private static let debounceDelay: Duration = .seconds(5)
     private static let enabledKey = "ICloudSync.enabled"
     private static let deviceIDKey = "ICloudSync.deviceID"
     private static let syncedRevisionsKey = "ICloudSync.syncedRevisions"
     private static let localHashesKey = "ICloudSync.localHashes"
     private static let lastSyncDateKey = "ICloudSync.lastSyncDate"
-    private static let passphraseKeychainKey = "ICloudSync.apiKeyPassphrase"
+    /// Left behind by builds that encrypted API keys with a passphrase.
+    private static let legacyPassphraseKeychainKey = "ICloudSync.apiKeyPassphrase"
 
     /// Preferences outside the upstream backup format. They are read when the services start,
     /// so remote changes are written to UserDefaults and take full effect on the next launch.
@@ -132,7 +138,6 @@ final class ICloudSyncService: ObservableObject {
 
     private init() {
         isEnabled = UserDefaults.standard.bool(forKey: Self.enabledKey)
-        hasPassphrase = Self.storedPassphrase() != nil
         lastSyncDate = UserDefaults.standard.object(forKey: Self.lastSyncDateKey) as? Date
     }
 
@@ -185,15 +190,16 @@ final class ICloudSyncService: ObservableObject {
 
     func start(dependencies: Dependencies) {
         self.dependencies = dependencies
+        KeychainService.shared.delete(forKey: Self.legacyPassphraseKeychainKey, syncable: false)
 
-        activationObserver = NotificationCenter.default.addObserver(
-            forName: NSApplication.didBecomeActiveNotification, object: nil, queue: .main
+        keyChangeObserver = NotificationCenter.default.addObserver(
+            forName: .aiProviderKeyChanged, object: nil, queue: .main
         ) { _ in
-            Task { @MainActor in ICloudSyncService.shared.syncSoon() }
+            Task { @MainActor in ICloudSyncService.shared.scheduleSync() }
         }
 
         if isEnabled {
-            startTimer()
+            startWatching()
             syncSoon()
         }
     }
@@ -208,38 +214,12 @@ final class ICloudSyncService: ObservableObject {
             defaults.removeObject(forKey: Self.syncedRevisionsKey)
             defaults.removeObject(forKey: Self.localHashesKey)
             errorMessage = nil
-            startTimer()
+            startWatching()
             syncSoon()
         } else {
-            timer?.invalidate()
-            timer = nil
+            stopWatching()
             errorMessage = nil
-            apiKeysMessage = nil
         }
-    }
-
-    func setPassphrase(_ passphrase: String) {
-        let trimmed = passphrase.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        KeychainService.shared.save(trimmed, forKey: Self.passphraseKeychainKey, syncable: false)
-        cachedPassphrase = .some(trimmed)
-        hasPassphrase = true
-        apiKeysMessage = nil
-        // Re-check API keys against the remote copy with the new passphrase.
-        var revisions = syncedRevisions
-        revisions.removeValue(forKey: SyncSection.apiKeys.rawValue)
-        defaults.set(revisions, forKey: Self.syncedRevisionsKey)
-        var hashes = localHashes
-        hashes.removeValue(forKey: SyncSection.apiKeys.rawValue)
-        defaults.set(hashes, forKey: Self.localHashesKey)
-        syncSoon()
-    }
-
-    func removePassphrase() {
-        KeychainService.shared.delete(forKey: Self.passphraseKeychainKey, syncable: false)
-        cachedPassphrase = .some(nil)
-        hasPassphrase = false
-        apiKeysMessage = nil
     }
 
     func syncSoon() {
@@ -256,11 +236,52 @@ final class ICloudSyncService: ObservableObject {
         NSApp.terminate(nil)
     }
 
-    private func startTimer() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: Self.syncInterval, repeats: true) { _ in
+    /// Coalesces triggers that arrive close together into one sync.
+    private func scheduleSync() {
+        guard isEnabled else { return }
+        pendingSync?.cancel()
+        pendingSync = Task {
+            try? await Task.sleep(for: Self.debounceDelay)
+            guard !Task.isCancelled else { return }
+            syncSoon()
+        }
+    }
+
+    private func startWatching() {
+        stopWatching()
+
+        let timer = Timer(timeInterval: Self.fallbackSyncInterval, repeats: true) { _ in
             Task { @MainActor in ICloudSyncService.shared.syncSoon() }
         }
+        // Lets macOS batch the wake-up with other work.
+        timer.tolerance = Self.fallbackSyncInterval / 10
+        RunLoop.main.add(timer, forMode: .common)
+        self.timer = timer
+
+        // iCloud Drive writes another Mac's upload into the folder; a vnode watch costs nothing while idle.
+        try? FileManager.default.createDirectory(at: Self.syncFolderURL, withIntermediateDirectories: true)
+        let descriptor = open(Self.syncFolderURL.path, O_EVTONLY)
+        guard descriptor >= 0 else {
+            logger.error("Could not watch the iCloud sync folder")
+            return
+        }
+        let source = DispatchSource.makeFileSystemObjectSource(
+            fileDescriptor: descriptor, eventMask: [.write, .rename, .delete], queue: .main)
+        source.setEventHandler {
+            Task { @MainActor in ICloudSyncService.shared.scheduleSync() }
+        }
+        source.setCancelHandler { close(descriptor) }
+        source.resume()
+        folderWatcher = source
+    }
+
+    private func stopWatching() {
+        timer?.invalidate()
+        timer = nil
+        folderWatcher?.cancel()
+        folderWatcher = nil
+        pendingSync?.cancel()
+        pendingSync = nil
     }
 
     // MARK: - Sync
@@ -295,14 +316,16 @@ final class ICloudSyncService: ObservableObject {
                     if entry.deviceID == deviceID {
                         // Our own upload (e.g. after turning sync off and on): adopt it and let the dirty
                         // check below upload anything that changed meanwhile.
-                        markSynced(
-                            section, revision: entry.revision,
-                            localHash: section == .apiKeys ? nil : Self.hash(entry.payload))
+                        markSynced(section, revision: entry.revision, localHash: Self.hash(entry.payload))
                     } else if try await apply(
                         section, payload: entry.payload, isFirstSync: syncedRevision == nil,
                         dependencies: dependencies)
                     {
-                        let appliedHash = try await snapshot(for: section)?.hash
+                        // API keys are merged: compare against the remote copy, so keys that exist only
+                        // on this Mac differ from it and get uploaded on the next pass.
+                        let appliedHash =
+                            section == .apiKeys
+                            ? Self.hash(entry.payload) : try await snapshot(for: section)?.hash
                         markSynced(section, revision: entry.revision, localHash: appliedHash)
                         logger.info(
                             "Applied \(section.rawValue, privacy: .public) from \(entry.deviceName, privacy: .public)")
@@ -313,13 +336,10 @@ final class ICloudSyncService: ObservableObject {
                 guard let local = try await snapshot(for: section) else { continue }
                 guard entry == nil || local.hash != localHashes[section.rawValue] else { continue }
 
-                let payload: Data
-                if section == .apiKeys {
-                    guard let sealed = try sealAPIKeys(local.payload, existing: entry) else { continue }
-                    payload = sealed
-                } else {
-                    payload = local.payload
-                }
+                // Never drop a key another Mac uploaded, even if this Mac could not store it locally.
+                let payload =
+                    section == .apiKeys
+                    ? try Self.mergedAPIKeys(local: local.payload, remote: entry?.payload) : local.payload
 
                 let newEntry = SectionEntry(
                     revision: UUID().uuidString,
@@ -377,7 +397,6 @@ final class ICloudSyncService: ObservableObject {
         case .preferences:
             return try preferencesSnapshot()
         case .apiKeys:
-            guard hasPassphrase else { return nil }
             return try apiKeysSnapshot()
         }
     }
@@ -524,7 +543,8 @@ final class ICloudSyncService: ObservableObject {
         return Snapshot(payload: data, hash: Self.hash(data))
     }
 
-    private func apiKeysSnapshot() throws -> Snapshot {
+    /// Nil when this Mac has no keys, so an empty Mac never uploads an empty section.
+    private func apiKeysSnapshot() throws -> Snapshot? {
         let apiKeys = APIKeyManager.shared
         var keys: [String: String] = [:]
 
@@ -545,38 +565,21 @@ final class ICloudSyncService: ObservableObject {
             }
         }
 
+        guard !keys.isEmpty else { return nil }
         let data = try Self.makeEncoder().encode(keys)
         return Snapshot(payload: data, hash: Self.hash(data))
     }
 
-    private var cachedPassphrase: String??
-
-    private var passphrase: String? {
-        if let cachedPassphrase { return cachedPassphrase }
-        let value = Self.storedPassphrase()
-        cachedPassphrase = .some(value)
-        return value
+    /// Decodes a remote API keys payload; nil for the encrypted format of older builds, which is replaced.
+    private static func decodeAPIKeys(_ payload: Data) -> [String: String]? {
+        try? JSONDecoder().decode([String: String].self, from: payload)
     }
 
-    private static func storedPassphrase() -> String? {
-        guard let value = KeychainService.shared.getString(forKey: passphraseKeychainKey, syncable: false),
-            !value.isEmpty
-        else { return nil }
-        return value
-    }
-
-    /// Returns nil (and skips the upload) when the remote keys use a different passphrase,
-    /// so one Mac never locks the other out of its keys.
-    private func sealAPIKeys(_ plaintext: Data, existing: SectionEntry?) throws -> Data? {
-        guard let passphrase else { return nil }
-        let existingSealed = existing.flatMap { try? JSONDecoder().decode(ICloudSyncCrypto.SealedPayload.self, from: $0.payload) }
-        if let existingSealed, (try? ICloudSyncCrypto.open(existingSealed, passphrase: passphrase)) == nil {
-            apiKeysMessage = ICloudSyncCrypto.CryptoError.wrongPassphrase.localizedDescription
-            return nil
-        }
-        let sealed = try ICloudSyncCrypto.seal(plaintext, passphrase: passphrase, reusingSaltFrom: existingSealed)
-        apiKeysMessage = nil
-        return try JSONEncoder().encode(sealed)
+    /// Remote keys plus local ones, local winning on conflicts (it is the newer change).
+    private static func mergedAPIKeys(local: Data, remote: Data?) throws -> Data {
+        var keys = remote.flatMap(decodeAPIKeys) ?? [:]
+        keys.merge(decodeAPIKeys(local) ?? [:]) { _, localValue in localValue }
+        return try makeEncoder().encode(keys)
     }
 
     // MARK: - Applying remote sections
@@ -624,20 +627,10 @@ final class ICloudSyncService: ObservableObject {
             return false
 
         case .apiKeys:
-            guard let passphrase else {
-                apiKeysMessage = "Your other Mac shares API keys. Enter the same passphrase to receive them."
-                return false
+            // An encrypted payload from an older build is skipped; this Mac's keys replace it.
+            if let keys = Self.decodeAPIKeys(payload) {
+                applyAPIKeys(keys, dependencies: dependencies)
             }
-            let sealed = try JSONDecoder().decode(ICloudSyncCrypto.SealedPayload.self, from: payload)
-            let plaintext: Data
-            do {
-                plaintext = try ICloudSyncCrypto.open(sealed, passphrase: passphrase)
-            } catch {
-                apiKeysMessage = error.localizedDescription
-                return false
-            }
-            applyAPIKeys(try JSONDecoder().decode([String: String].self, from: plaintext))
-            apiKeysMessage = nil
             return true
         }
     }
@@ -697,8 +690,9 @@ final class ICloudSyncService: ObservableObject {
         return changed
     }
 
-    /// Adds and updates keys; a key removed on one Mac is not removed from the others.
-    private func applyAPIKeys(_ keys: [String: String]) {
+    /// Adds and updates keys live, like entering them in Settings; a key removed on one Mac is not
+    /// removed from the others.
+    private func applyAPIKeys(_ keys: [String: String], dependencies: Dependencies) {
         let apiKeys = APIKeyManager.shared
         var changed = false
         for (identifier, value) in keys where !value.isEmpty {
@@ -722,7 +716,8 @@ final class ICloudSyncService: ObservableObject {
             }
         }
         if changed {
-            needsRelaunch = true
+            dependencies.transcriptionModelManager.refreshAllAvailableModels()
+            NotificationCenter.default.post(name: .aiProviderKeyChanged, object: nil)
         }
     }
 

@@ -23,9 +23,9 @@ Upstream syncs the dictionary through CloudKit and API keys through iCloud Keych
 
 - general settings and shortcuts, prompts, modes, dictionary and custom models, applied live exactly like *Import Settings*
 - AI provider choices and models, Ollama/custom provider settings, language, filler words, paste and enhancement options. These are applied when the app starts; after a remote change the section offers *Relaunch*.
-- API keys, encrypted with AES-GCM using a passphrase (PBKDF2-SHA256) that stays in each Mac's Keychain. Use the same passphrase on every Mac.
+- API keys, applied live, so a new Mac comes up already connected. They are stored unencrypted in `apiKeys.json`, protected only by your iCloud account (end-to-end encrypted if Advanced Data Protection is on).
 
-Each part is last-writer-wins on its own. When you turn sync on, whatever another Mac already uploaded wins. Dictionary entries and API keys are merged, so deleting one on one Mac does not delete it on the others. Downloaded models, the selected transcription model, history and license stay per Mac.
+There is no polling: a Mac syncs at launch, on *Sync Now*, when an API key changes and when another Mac's upload lands in the folder (a file watch, idle otherwise). Other local edits go up on the next of those, or within 6 hours. Each part is last-writer-wins on its own. When you turn sync on, whatever another Mac already uploaded wins. Dictionary entries and API keys are merged, so deleting one on one Mac does not delete it on the others. Downloaded models, the selected transcription model, history and license stay per Mac.
 
 ## Secrets
 
