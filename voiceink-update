@@ -28,7 +28,8 @@ cmd_status() {
 cmd_install() {
   local tmp
   tmp=$(mktemp -d)
-  trap 'hdiutil detach "$tmp/mnt" -quiet 2>/dev/null || true; rm -rf "$tmp"' EXIT
+  # Expand $tmp now: the EXIT trap runs after this function's locals are gone.
+  trap "hdiutil detach '$tmp/mnt' -quiet 2>/dev/null || true; rm -rf '$tmp'" EXIT
 
   if ! curl -fsIL -o /dev/null "$RELEASES/latest/download/VoiceInk.dmg"; then
     echo "No build published yet. Check progress: https://github.com/$BUILDS_REPO/actions"
