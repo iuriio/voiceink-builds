@@ -30,6 +30,10 @@ cmd_install() {
   tmp=$(mktemp -d)
   trap 'hdiutil detach "$tmp/mnt" -quiet 2>/dev/null || true; rm -rf "$tmp"' EXIT
 
+  if ! curl -fsIL -o /dev/null "$RELEASES/latest/download/VoiceInk.dmg"; then
+    echo "No build published yet. Check progress: https://github.com/$BUILDS_REPO/actions"
+    exit 1
+  fi
   echo "Downloading latest build..."
   curl -fL --progress-bar "$RELEASES/latest/download/VoiceInk.dmg" -o "$tmp/VoiceInk.dmg"
   curl -fsSL "$RELEASES/latest/download/SHA256SUMS" -o "$tmp/SHA256SUMS"
