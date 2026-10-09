@@ -151,12 +151,18 @@ jobs:
             echo "ICLOUD_SYNC=off" >> "$GITHUB_ENV"
           fi
 
+      # xcodebuild may still fall back to ad-hoc signing; re-sign so the designated
+      # requirement stays stable and macOS keeps privacy permissions across updates.
+      - name: Re-sign with stable certificate
+        run: bash self/scripts/resign.sh "$IDENTITY" "$HOME/Downloads/VoiceInk.app"
+
       - name: Verify app
         run: |
           APP="$HOME/Downloads/VoiceInk.app"
           PLIST="$APP/Contents/Info.plist"
           codesign --verify --deep --strict "$APP"
-          codesign -dv --verbose=2 "$APP" 2>&1 | grep -E "Identifier|Authority"
+          codesign -dvv "$APP" 2>&1 | grep -q "^Authority=VoiceInk Local Signing" || { echo "App is not signed with the stable certificate"; exit 1; }
+          codesign -d --entitlements - --xml "$APP" | plutil -p - | grep -q "audio-input" || { echo "Microphone entitlement missing"; exit 1; }
           [ "$(/usr/libexec/PlistBuddy -c 'Print :SUFeedURL' "$PLIST")" = "$FEED_URL" ]
           [ "$(/usr/libexec/PlistBuddy -c 'Print :SUPublicEDKey' "$PLIST")" = "$SPARKLE_PUBLIC_KEY" ]
           [ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$PLIST")" = "$BUILD_NUMBER" ]
