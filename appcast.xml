@@ -4,14 +4,14 @@
     <title>VoiceInk (self-built)</title>
     <item>
       <title>VoiceInk 2.21 (c09cc1f)</title>
-      <pubDate>Fri, 09 Oct 2026 16:33:14 +0000</pubDate>
-      <sparkle:version>202610091611</sparkle:version>
+      <pubDate>Fri, 09 Oct 2026 22:27:17 +0000</pubDate>
+      <sparkle:version>202610092203</sparkle:version>
       <sparkle:shortVersionString>2.21 (c09cc1f)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
       <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-c09cc1f</sparkle:fullReleaseNotesLink>
       <description><![CDATA[<h3>VoiceInk 2.21 (c09cc1f)</h3><ul>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-c09cc1f/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="A1KUwIyrLQF4LzYTaE9SQ+ABV2vREuQoAdmOERf/1FtfVJngcB2d8g/N8n3yTroBMFoLuKWdkv7soCkO2QC/AQ==" length="85194490"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-c09cc1f/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="C4k36mIxNzpDoOyXScWrnX21fJb8ajAqgyeOzcAFCEjxjbbrRKngiK43pfd7krxBHWk3Hn96AlHeFu1mAWXTAw==" length="85180449"/>
     </item>
   </channel>
 </rss>
