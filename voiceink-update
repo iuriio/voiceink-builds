@@ -9,7 +9,7 @@
 
 set -euo pipefail
 
-BUILDS_REPO="${VOICEINK_BUILDS_REPO:-iuri1911/voiceink-builds}"
+BUILDS_REPO="${VOICEINK_BUILDS_REPO:-iuriio/voiceink-builds}"
 INSTALL_PATH="${VOICEINK_INSTALL_PATH:-/Applications/VoiceInk.app}"
 RELEASES="https://github.com/$BUILDS_REPO/releases"
 
