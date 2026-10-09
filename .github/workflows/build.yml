@@ -134,9 +134,22 @@ jobs:
           sed -i '' "s|-derivedDataPath \"\$(LOCAL_DERIVED_DATA)\"|-destination 'generic/platform=macOS' &|" Makefile
           grep -q "generic/platform=macOS" Makefile || { echo "Makefile patch failed"; exit 1; }
 
+      - name: Add iCloud Drive sync
+        run: self/patches/icloud-sync/apply.sh upstream
+
       - name: Build (make local)
         working-directory: upstream
-        run: make local LOCAL_CODESIGN_IDENTITY="$IDENTITY"
+        run: |
+          if make local LOCAL_CODESIGN_IDENTITY="$IDENTITY"; then
+            echo "ICLOUD_SYNC=on" >> "$GITHUB_ENV"
+          else
+            # Upstream moved code the sync patch depends on: still ship the update, without sync.
+            echo "::warning::Build with iCloud sync failed; building without it. Update patches/icloud-sync."
+            git checkout -- VoiceInk/App/VoiceInk.swift VoiceInk/Features/Settings/Views/SettingsView.swift
+            rm -rf VoiceInk/Features/ICloudSync
+            make local LOCAL_CODESIGN_IDENTITY="$IDENTITY"
+            echo "ICLOUD_SYNC=off" >> "$GITHUB_ENV"
+          fi
 
       - name: Verify app
         run: |
@@ -194,7 +207,13 @@ jobs:
           {
             echo "Build of [Beingpax/VoiceInk@$SHORT_SHA](https://github.com/$UPSTREAM/commit/$SHA) (LOCAL_BUILD, self-signed, Sparkle feed from this repo)."
             echo
-            echo "Source: https://github.com/$UPSTREAM/tree/$SHA (only \`SUFeedURL\`, \`SUPublicEDKey\` and build number changed)."
+            echo "Source: https://github.com/$UPSTREAM/tree/$SHA (changed: \`SUFeedURL\`, \`SUPublicEDKey\`, build number, Universal build destination, and the iCloud sync patch below)."
+            echo
+            if [ "$ICLOUD_SYNC" = "on" ]; then
+              echo "Universal (Apple Silicon + Intel). Adds iCloud Drive sync ([patches/icloud-sync](https://github.com/$GITHUB_REPOSITORY/tree/main/patches/icloud-sync))."
+            else
+              echo "Universal (Apple Silicon + Intel). **iCloud sync is not in this build**: the patch no longer fits upstream."
+            fi
             echo
             echo "### Upstream changes"
             if [ -n "$LAST" ] && git -C upstream cat-file -e "$LAST" 2>/dev/null; then
