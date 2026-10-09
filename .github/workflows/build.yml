@@ -125,6 +125,15 @@ jobs:
           /usr/libexec/PlistBuddy -c "Set :SUPublicEDKey $SPARKLE_PUBLIC_KEY" VoiceInk/Info.plist
           sed -i '' -E "s/CURRENT_PROJECT_VERSION = [0-9]+;/CURRENT_PROJECT_VERSION = $BUILD_NUMBER;/" VoiceInk.xcodeproj/project.pbxproj
 
+      - name: Make the build Universal (Apple Silicon + Intel)
+        working-directory: upstream
+        run: |
+          # Without a destination xcodebuild picks "My Mac (arm64)" and builds arm64 only.
+          # The generic destination builds every arch in ARCHS_STANDARD (arm64 x86_64),
+          # like upstream's own `xcodebuild archive` release.
+          sed -i '' "s|-derivedDataPath \"\$(LOCAL_DERIVED_DATA)\"|-destination 'generic/platform=macOS' &|" Makefile
+          grep -q "generic/platform=macOS" Makefile || { echo "Makefile patch failed"; exit 1; }
+
       - name: Build (make local)
         working-directory: upstream
         run: make local LOCAL_CODESIGN_IDENTITY="$IDENTITY"
@@ -138,6 +147,17 @@ jobs:
           [ "$(/usr/libexec/PlistBuddy -c 'Print :SUFeedURL' "$PLIST")" = "$FEED_URL" ]
           [ "$(/usr/libexec/PlistBuddy -c 'Print :SUPublicEDKey' "$PLIST")" = "$SPARKLE_PUBLIC_KEY" ]
           [ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$PLIST")" = "$BUILD_NUMBER" ]
+          # Every Mach-O in the bundle must run on both Apple Silicon and Intel
+          MISSING=0
+          while IFS= read -r -d '' f; do
+            file -b "$f" | grep -q Mach-O || continue
+            ARCHS=$(lipo -archs "$f")
+            echo "$ARCHS :: ${f#$APP/}"
+            for a in arm64 x86_64; do
+              [[ " $ARCHS " == *" $a "* ]] || { echo "::error::$a missing in ${f#$APP/}"; MISSING=1; }
+            done
+          done < <(find "$APP" -type f -perm -u+x -print0)
+          [ "$MISSING" = 0 ]
           MARKETING=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PLIST")
           SHORT_SHA=${SHA:0:7}
           echo "MARKETING=$MARKETING" >> "$GITHUB_ENV"

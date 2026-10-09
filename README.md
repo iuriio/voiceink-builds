@@ -5,10 +5,13 @@ Automated builds of [VoiceInk](https://github.com/Beingpax/VoiceInk) (GPL-3.0) f
 ## How it works
 
 - `.github/workflows/build.yml` runs every 6h. If upstream `main` moved since the last build, it builds that commit on a `macos-26` runner.
-- Before building it changes only three things in the upstream source:
+- The app is **Universal** (Apple Silicon + Intel): one DMG/zip and one Sparkle feed for both. Without a generic destination `xcodebuild` only builds the runner's arch (arm64), so the workflow sets one and fails the build if any binary in the bundle lacks `arm64` or `x86_64`.
+  - On Intel, VoiceInk Refine (local MLX model) is unavailable, as in upstream; transcription and everything else work.
+- Before building it changes only these things in the upstream source:
   - `SUFeedURL` points to `appcast.xml` in this repo
   - `SUPublicEDKey` is this repo's Sparkle key
   - `CURRENT_PROJECT_VERSION` is a UTC timestamp, so every build is newer than the last
+  - `Makefile`: `make local` gets `-destination 'generic/platform=macOS'` (Universal build)
 - The app is signed with a stable self-signed certificate (`VoiceInk Local Signing`), so macOS keeps microphone/accessibility permissions across updates.
 - Each build publishes a release (`VoiceInk.zip` for Sparkle, `VoiceInk.dmg` for manual install) and commits the new `appcast.xml`. The last 10 releases are kept.
 - The installed app checks `appcast.xml` and shows the update in the Dashboard / "Check for Updates…".
