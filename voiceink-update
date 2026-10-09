@@ -1,0 +1,62 @@
+#!/bin/bash
+# Installs the latest self-built VoiceInk. After the first install, updates come
+# through the app itself (Sparkle, Dashboard "Update" / "Check for Updates…").
+#
+# Usage:
+#   voiceink-update status         show installed vs latest build
+#   voiceink-update install        download + install latest build to /Applications
+#   voiceink-update build [ref]    ask GitHub Actions to build now (default: upstream main)
+
+set -euo pipefail
+
+BUILDS_REPO="${VOICEINK_BUILDS_REPO:-iuri1911/voiceink-builds}"
+INSTALL_PATH="${VOICEINK_INSTALL_PATH:-/Applications/VoiceInk.app}"
+RELEASES="https://github.com/$BUILDS_REPO/releases"
+
+installed_version() {
+  local plist="$INSTALL_PATH/Contents/Info.plist"
+  [ -f "$plist" ] || { echo "none"; return; }
+  echo "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$plist") (build $(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$plist"))"
+}
+
+cmd_status() {
+  echo "Installed: $(installed_version)"
+  echo "Latest:    $(curl -fsSL "https://raw.githubusercontent.com/$BUILDS_REPO/main/appcast.xml" | sed -nE 's:.*<title>(VoiceInk [^<]+)</title>.*:\1:p' | tail -1)"
+  echo "Releases:  $RELEASES"
+}
+
+cmd_install() {
+  local tmp
+  tmp=$(mktemp -d)
+  trap 'hdiutil detach "$tmp/mnt" -quiet 2>/dev/null || true; rm -rf "$tmp"' EXIT
+
+  echo "Downloading latest build..."
+  curl -fL --progress-bar "$RELEASES/latest/download/VoiceInk.dmg" -o "$tmp/VoiceInk.dmg"
+  curl -fsSL "$RELEASES/latest/download/SHA256SUMS" -o "$tmp/SHA256SUMS"
+  (cd "$tmp" && grep ' VoiceInk.dmg$' SHA256SUMS | shasum -a 256 -c -)
+
+  hdiutil attach "$tmp/VoiceInk.dmg" -nobrowse -readonly -quiet -mountpoint "$tmp/mnt"
+
+  if pgrep -x VoiceInk >/dev/null; then
+    osascript -e 'tell application "VoiceInk" to quit' >/dev/null 2>&1 || pkill -x VoiceInk || true
+    sleep 2
+  fi
+
+  rm -rf "$INSTALL_PATH"
+  ditto "$tmp/mnt/VoiceInk.app" "$INSTALL_PATH"
+  xattr -cr "$INSTALL_PATH"
+  echo "Installed $(installed_version)"
+  open "$INSTALL_PATH"
+}
+
+cmd_build() {
+  gh workflow run build.yml -R "$BUILDS_REPO" -f ref="${1:-main}"
+  echo "Build requested: https://github.com/$BUILDS_REPO/actions"
+}
+
+case "${1:-status}" in
+  status) cmd_status ;;
+  install|update) cmd_install ;;
+  build) cmd_build "${2:-}" ;;
+  *) sed -n '2,9p' "$0"; exit 1 ;;
+esac
