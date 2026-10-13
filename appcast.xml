@@ -3,15 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (c09cc1f)</title>
-      <pubDate>Fri, 09 Oct 2026 22:27:17 +0000</pubDate>
-      <sparkle:version>202610092203</sparkle:version>
-      <sparkle:shortVersionString>2.21 (c09cc1f)</sparkle:shortVersionString>
+      <title>VoiceInk 2.21 (5628765)</title>
+      <pubDate>Tue, 13 Oct 2026 14:37:37 +0000</pubDate>
+      <sparkle:version>202610131412</sparkle:version>
+      <sparkle:shortVersionString>2.21 (5628765)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-c09cc1f</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (c09cc1f)</h3><ul>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-5628765</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (5628765)</h3><ul>
+<li>Add recovery for insufficient audio capture (5628765)</li>
+<li>Fix empty recordings after input device format changes (f52a4c3)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-c09cc1f/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="C4k36mIxNzpDoOyXScWrnX21fJb8ajAqgyeOzcAFCEjxjbbrRKngiK43pfd7krxBHWk3Hn96AlHeFu1mAWXTAw==" length="85180449"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-5628765/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="MKLguiIPQZNMnPLusiZxTe0BCveUZbuXWZSToEyLE81DdZyHP+2ZjpfwyfzOltkN4UAuH+UmAACbVS5Tv8uACw==" length="85181978"/>
     </item>
   </channel>
 </rss>
