@@ -3,17 +3,16 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (5628765)</title>
-      <pubDate>Tue, 13 Oct 2026 14:37:37 +0000</pubDate>
-      <sparkle:version>202610131412</sparkle:version>
-      <sparkle:shortVersionString>2.21 (5628765)</sparkle:shortVersionString>
+      <title>VoiceInk 2.21 (2af811a)</title>
+      <pubDate>Wed, 14 Oct 2026 12:15:22 +0000</pubDate>
+      <sparkle:version>202610141153</sparkle:version>
+      <sparkle:shortVersionString>2.21 (2af811a)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-5628765</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (5628765)</h3><ul>
-<li>Add recovery for insufficient audio capture (5628765)</li>
-<li>Fix empty recordings after input device format changes (f52a4c3)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-2af811a</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (2af811a)</h3><ul>
+<li>Update Anthropic models to Claude Sonnet 5.5 and Haiku 5.5 (fd3fa13)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-5628765/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="MKLguiIPQZNMnPLusiZxTe0BCveUZbuXWZSToEyLE81DdZyHP+2ZjpfwyfzOltkN4UAuH+UmAACbVS5Tv8uACw==" length="85181978"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-2af811a/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="hzdpX+eKIHAVE0B+ATx+kRjAdEGQ2sUD+Wbl4ZE9ZpXhGOjtp2kjC0tvUYHc68JdYjoFpgbCTehWi19PeCddBw==" length="85181937"/>
     </item>
   </channel>
 </rss>
