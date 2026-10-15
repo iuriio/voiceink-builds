@@ -3,19 +3,16 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (3a4b3e9)</title>
-      <pubDate>Thu, 15 Oct 2026 11:53:31 +0000</pubDate>
-      <sparkle:version>202610151130</sparkle:version>
-      <sparkle:shortVersionString>2.21 (3a4b3e9)</sparkle:shortVersionString>
+      <title>VoiceInk 2.21 (2c9f082)</title>
+      <pubDate>Thu, 15 Oct 2026 17:28:29 +0000</pubDate>
+      <sparkle:version>202610151702</sparkle:version>
+      <sparkle:shortVersionString>2.21 (2c9f082)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-3a4b3e9</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (3a4b3e9)</h3><ul>
-<li>Run resource cleanup after paste instead of before delivery (157f5a1)</li>
-<li>Fix cleanup ordering and clipboard restore delay (e757df7)</li>
-<li>Improve dictation paste reliability (3db8ad1)</li>
-<li>Improve Unified model prewarming (ba58dab)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-2c9f082</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (2c9f082)</h3><ul>
+<li>Honor selected signing identity for local builds (2c9f082)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-3a4b3e9/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="RJ8n1qA3Xzc8JJuPMRa9q9QrJJy64r6XMwHzgm8i9Zbu5w4pukrjZXk8s3EhIIZJIR/+Jl37svIygyzucDs5BQ==" length="85247647"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-2c9f082/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="JeavJkwvMtQaxvu8IUK29athwgnC1K3DN5twsv+KHnmmjQyY/uagngRN7hSF9TUHX8+iVkx/JLXw7kEO1cxZAg==" length="85248771"/>
     </item>
   </channel>
 </rss>
