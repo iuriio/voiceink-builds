@@ -3,16 +3,19 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (2af811a)</title>
-      <pubDate>Wed, 14 Oct 2026 12:15:22 +0000</pubDate>
-      <sparkle:version>202610141153</sparkle:version>
-      <sparkle:shortVersionString>2.21 (2af811a)</sparkle:shortVersionString>
+      <title>VoiceInk 2.21 (3a4b3e9)</title>
+      <pubDate>Thu, 15 Oct 2026 11:53:31 +0000</pubDate>
+      <sparkle:version>202610151130</sparkle:version>
+      <sparkle:shortVersionString>2.21 (3a4b3e9)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-2af811a</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (2af811a)</h3><ul>
-<li>Update Anthropic models to Claude Sonnet 5.5 and Haiku 5.5 (fd3fa13)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-3a4b3e9</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (3a4b3e9)</h3><ul>
+<li>Run resource cleanup after paste instead of before delivery (157f5a1)</li>
+<li>Fix cleanup ordering and clipboard restore delay (e757df7)</li>
+<li>Improve dictation paste reliability (3db8ad1)</li>
+<li>Improve Unified model prewarming (ba58dab)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-2af811a/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="hzdpX+eKIHAVE0B+ATx+kRjAdEGQ2sUD+Wbl4ZE9ZpXhGOjtp2kjC0tvUYHc68JdYjoFpgbCTehWi19PeCddBw==" length="85181937"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-3a4b3e9/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="RJ8n1qA3Xzc8JJuPMRa9q9QrJJy64r6XMwHzgm8i9Zbu5w4pukrjZXk8s3EhIIZJIR/+Jl37svIygyzucDs5BQ==" length="85247647"/>
     </item>
   </channel>
 </rss>
