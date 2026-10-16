@@ -3,16 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (2c9f082)</title>
-      <pubDate>Thu, 15 Oct 2026 17:28:29 +0000</pubDate>
-      <sparkle:version>202610151702</sparkle:version>
-      <sparkle:shortVersionString>2.21 (2c9f082)</sparkle:shortVersionString>
+      <title>VoiceInk 2.21 (6a14368)</title>
+      <pubDate>Fri, 16 Oct 2026 04:53:02 +0000</pubDate>
+      <sparkle:version>202610160433</sparkle:version>
+      <sparkle:shortVersionString>2.21 (6a14368)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-2c9f082</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (2c9f082)</h3><ul>
-<li>Honor selected signing identity for local builds (2c9f082)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-6a14368</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (6a14368)</h3><ul>
+<li>Move channel discovery off main and preserve internal mic policy (c1beb6a)</li>
+<li>Add per-device microphone input selection (005a657)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-2c9f082/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="JeavJkwvMtQaxvu8IUK29athwgnC1K3DN5twsv+KHnmmjQyY/uagngRN7hSF9TUHX8+iVkx/JLXw7kEO1cxZAg==" length="85248771"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-6a14368/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="AEy1yis0FVbKUg7RBhVMWEJwG65ix4Gp/7srojefqim7WgXMyT3NPD2/3zH01bEHB7gVE0N9plOeXsdDVlkiBA==" length="85304035"/>
     </item>
   </channel>
 </rss>
