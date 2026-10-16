@@ -3,17 +3,16 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (6a14368)</title>
-      <pubDate>Fri, 16 Oct 2026 04:53:02 +0000</pubDate>
-      <sparkle:version>202610160433</sparkle:version>
-      <sparkle:shortVersionString>2.21 (6a14368)</sparkle:shortVersionString>
+      <title>VoiceInk 2.21 (76dc748)</title>
+      <pubDate>Fri, 16 Oct 2026 17:06:03 +0000</pubDate>
+      <sparkle:version>202610161640</sparkle:version>
+      <sparkle:shortVersionString>2.21 (76dc748)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-6a14368</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (6a14368)</h3><ul>
-<li>Move channel discovery off main and preserve internal mic policy (c1beb6a)</li>
-<li>Add per-device microphone input selection (005a657)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-76dc748</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (76dc748)</h3><ul>
+<li>Restore per-mode Auto Send alongside global Return shortcut (9090f25)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-6a14368/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="AEy1yis0FVbKUg7RBhVMWEJwG65ix4Gp/7srojefqim7WgXMyT3NPD2/3zH01bEHB7gVE0N9plOeXsdDVlkiBA==" length="85304035"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-76dc748/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="+Ym/MKK/HdLwOnChJPMZ4FuyY9VZ9ZoxgfDbqp4/dKB7vPwHXFOf0ccr9TfzqXmS3DBB0xdQi/MFeFpA6WAsAQ==" length="85316269"/>
     </item>
   </channel>
 </rss>
