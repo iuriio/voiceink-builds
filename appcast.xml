@@ -3,17 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (9ce98ec)</title>
-      <pubDate>Fri, 16 Oct 2026 21:32:48 +0000</pubDate>
-      <sparkle:version>202610162109</sparkle:version>
-      <sparkle:shortVersionString>2.21 (9ce98ec)</sparkle:shortVersionString>
+      <title>VoiceInk 2.21 (d791c15)</title>
+      <pubDate>Sun, 18 Oct 2026 11:24:52 +0000</pubDate>
+      <sparkle:version>202610181106</sparkle:version>
+      <sparkle:shortVersionString>2.21 (d791c15)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-9ce98ec</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (9ce98ec)</h3><ul>
-<li>Fix empty direct typing warning and clarify paste help (3599a9e)</li>
-<li>Add direct typing paste method (62ca0e7)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-d791c15</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.21 (d791c15)</h3><ul>
+<li>Warn about system-wide audio cut in the admin prompt and log restart failures (bdbc774)</li>
+<li>Explain stuck coreaudiod instead of a generic recording error (bfbb9fc)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-9ce98ec/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="AaYe2kAq6KTzokYRcNMwwOtCFPX+Z4LWU6q5Zw7uwkmXktbawCtgCATojZFDujyJRhWgQ7N7k68BgLmOKJiNDA==" length="85338344"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-d791c15/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="UkaOVTAH/w1wbHQ9T9XeSFUeEoBkpMT+PGCTmRiySN8iVU5KFVqFw67NgJZHMO9Ttt2+ycbuk+h0m7tgEZxCBQ==" length="85346531"/>
     </item>
   </channel>
 </rss>
