@@ -3,17 +3,18 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (0019d7a)</title>
-      <pubDate>Sat, 24 Oct 2026 04:57:26 +0000</pubDate>
-      <sparkle:version>202610240437</sparkle:version>
-      <sparkle:shortVersionString>2.22 (0019d7a)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (0ac374d)</title>
+      <pubDate>Sat, 24 Oct 2026 11:18:21 +0000</pubDate>
+      <sparkle:version>202610241101</sparkle:version>
+      <sparkle:shortVersionString>2.22 (0ac374d)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-0019d7a</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (0019d7a)</h3><ul>
-<li>Fix shortcut recovery and recording startup (6297f74)</li>
-<li>Improve shortcut recovery and direct typing reliability (f648d27)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-0ac374d</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (0ac374d)</h3><ul>
+<li>Restore stable 2.21 update feed (0ac374d)</li>
+<li>Remember microphone UID only after displaying notice (2ce1bb7)</li>
+<li>Fix repeated microphone notifications and defer notice UI (324e83f)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-0019d7a/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="Unh7g7KKDPlv2TiJyelfrUXR/psL7+ZFfiWwnhmoQo3e2sGuotUxkM739dv3c49MCO+2zZPVIjnIkR60K8CxCw==" length="85655241"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-0ac374d/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="QHimkprPY3pXyPjMBY+4dMok60whfPVWPJ+bko4kqRK7WappylUK/HdCxag1TZa/Ko9+r9EnzpEp8mqOFZLSAw==" length="85655498"/>
     </item>
   </channel>
 </rss>
