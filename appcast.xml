@@ -3,17 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.21 (22e5ec5)</title>
-      <pubDate>Tue, 20 Oct 2026 17:45:19 +0000</pubDate>
-      <sparkle:version>202610201720</sparkle:version>
-      <sparkle:shortVersionString>2.21 (22e5ec5)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (0019d7a)</title>
+      <pubDate>Sat, 24 Oct 2026 04:57:26 +0000</pubDate>
+      <sparkle:version>202610240437</sparkle:version>
+      <sparkle:shortVersionString>2.22 (0019d7a)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.21-22e5ec5</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.21 (22e5ec5)</h3><ul>
-<li>Fix Auto Learn response fence parsing edge cases (22e5ec5)</li>
-<li>Unwrap Markdown code fences in Auto-Learn review responses (8d874ea)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-0019d7a</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (0019d7a)</h3><ul>
+<li>Fix shortcut recovery and recording startup (6297f74)</li>
+<li>Improve shortcut recovery and direct typing reliability (f648d27)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.21-22e5ec5/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="qk96ebDHmhSAdidyHQEyK4LFyb6sEbQqBUXJTXvoznO+jofsG7kOAEpTn7K4atCAEdQuOmux4AgWUSzoOJPnBA==" length="85348222"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-0019d7a/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="Unh7g7KKDPlv2TiJyelfrUXR/psL7+ZFfiWwnhmoQo3e2sGuotUxkM739dv3c49MCO+2zZPVIjnIkR60K8CxCw==" length="85655241"/>
     </item>
   </channel>
 </rss>
