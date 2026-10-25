@@ -3,18 +3,23 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (0ac374d)</title>
-      <pubDate>Sat, 24 Oct 2026 11:18:21 +0000</pubDate>
-      <sparkle:version>202610241101</sparkle:version>
-      <sparkle:shortVersionString>2.22 (0ac374d)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (b6f5baf)</title>
+      <pubDate>Sun, 25 Oct 2026 16:58:50 +0000</pubDate>
+      <sparkle:version>202610251620</sparkle:version>
+      <sparkle:shortVersionString>2.22 (b6f5baf)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-0ac374d</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (0ac374d)</h3><ul>
-<li>Restore stable 2.21 update feed (0ac374d)</li>
-<li>Remember microphone UID only after displaying notice (2ce1bb7)</li>
-<li>Fix repeated microphone notifications and defer notice UI (324e83f)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-b6f5baf</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (b6f5baf)</h3><ul>
+<li>Use app-specific focus for smart punctuation (2d5393e)</li>
+<li>Refine smart punctuation and accessibility reads (03eb194)</li>
+<li>Add smart punctuation (ffb65bd)</li>
+<li>Preserve auto-learn repair warnings (b10194b)</li>
+<li>Fix auto-learn recovery and suggestions (b0f1443)</li>
+<li>Improve auto-learn suggestions and repair (e313437)</li>
+<li>Refine auto-learn panel position and storage filenames (a51f264)</li>
+<li>Rework dictionary auto-learning (0a7d1d9)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-0ac374d/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="QHimkprPY3pXyPjMBY+4dMok60whfPVWPJ+bko4kqRK7WappylUK/HdCxag1TZa/Ko9+r9EnzpEp8mqOFZLSAw==" length="85655498"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-b6f5baf/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="gjOOh2FJtSc1jCh/BTUuq+kEmee6WGfo04EZrbEY+I5h3AV8wZF5cGQp5kqLJIMy9Mvp8Z2lU1FtZlbAlOKUCA==" length="85274260"/>
     </item>
   </channel>
 </rss>
