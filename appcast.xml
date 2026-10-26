@@ -3,23 +3,18 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (b6f5baf)</title>
-      <pubDate>Sun, 25 Oct 2026 16:58:50 +0000</pubDate>
-      <sparkle:version>202610251620</sparkle:version>
-      <sparkle:shortVersionString>2.22 (b6f5baf)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (ae7f9ab)</title>
+      <pubDate>Mon, 26 Oct 2026 05:20:25 +0000</pubDate>
+      <sparkle:version>202610260448</sparkle:version>
+      <sparkle:shortVersionString>2.22 (ae7f9ab)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-b6f5baf</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (b6f5baf)</h3><ul>
-<li>Use app-specific focus for smart punctuation (2d5393e)</li>
-<li>Refine smart punctuation and accessibility reads (03eb194)</li>
-<li>Add smart punctuation (ffb65bd)</li>
-<li>Preserve auto-learn repair warnings (b10194b)</li>
-<li>Fix auto-learn recovery and suggestions (b0f1443)</li>
-<li>Improve auto-learn suggestions and repair (e313437)</li>
-<li>Refine auto-learn panel position and storage filenames (a51f264)</li>
-<li>Rework dictionary auto-learning (0a7d1d9)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-ae7f9ab</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (ae7f9ab)</h3><ul>
+<li>Preserve legacy per-mode model selections during Voxtral migration (240bb32)</li>
+<li>Fix Mistral vocabulary isolation and inherited model migration (53663ea)</li>
+<li>Add Voxtral 3 transcription models and Mistral Large 4 (5e62638)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-b6f5baf/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="gjOOh2FJtSc1jCh/BTUuq+kEmee6WGfo04EZrbEY+I5h3AV8wZF5cGQp5kqLJIMy9Mvp8Z2lU1FtZlbAlOKUCA==" length="85274260"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-ae7f9ab/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="G1230TAjD54FizRgL7UrvN82ociLR6fY9GcQi8JbggZllSFGs2q1xBZdnFZmDZRW13k2LuLAVKtb+SKSOOkvBg==" length="85293514"/>
     </item>
   </channel>
 </rss>
