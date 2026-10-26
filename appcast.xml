@@ -3,18 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (ae7f9ab)</title>
-      <pubDate>Mon, 26 Oct 2026 05:20:25 +0000</pubDate>
-      <sparkle:version>202610260448</sparkle:version>
-      <sparkle:shortVersionString>2.22 (ae7f9ab)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (78aa19d)</title>
+      <pubDate>Mon, 26 Oct 2026 23:19:27 +0000</pubDate>
+      <sparkle:version>202610262240</sparkle:version>
+      <sparkle:shortVersionString>2.22 (78aa19d)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-ae7f9ab</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (ae7f9ab)</h3><ul>
-<li>Preserve legacy per-mode model selections during Voxtral migration (240bb32)</li>
-<li>Fix Mistral vocabulary isolation and inherited model migration (53663ea)</li>
-<li>Add Voxtral 3 transcription models and Mistral Large 4 (5e62638)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-78aa19d</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (78aa19d)</h3><ul>
+<li>Bound Core ML archive extraction size and entry count (9b61467)</li>
+<li>Replace Zip with ZIPFoundation and secure Core ML extraction (98f410e)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-ae7f9ab/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="G1230TAjD54FizRgL7UrvN82ociLR6fY9GcQi8JbggZllSFGs2q1xBZdnFZmDZRW13k2LuLAVKtb+SKSOOkvBg==" length="85293514"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-78aa19d/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="wBVsNQoj4aDIkIcdaPGCYUJYzGpUmM4jRWT2JRq8DjDbQYpqT+dRu4+SRKdHM8gAbSb1YN1spCntO7C9FnVoCg==" length="85528339"/>
     </item>
   </channel>
 </rss>
