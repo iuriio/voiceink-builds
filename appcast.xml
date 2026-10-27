@@ -3,17 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (78aa19d)</title>
-      <pubDate>Mon, 26 Oct 2026 23:19:27 +0000</pubDate>
-      <sparkle:version>202610262240</sparkle:version>
-      <sparkle:shortVersionString>2.22 (78aa19d)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (1027ea3)</title>
+      <pubDate>Tue, 27 Oct 2026 18:41:22 +0000</pubDate>
+      <sparkle:version>202610271801</sparkle:version>
+      <sparkle:shortVersionString>2.22 (1027ea3)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-78aa19d</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (78aa19d)</h3><ul>
-<li>Bound Core ML archive extraction size and entry count (9b61467)</li>
-<li>Replace Zip with ZIPFoundation and secure Core ML extraction (98f410e)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-1027ea3</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (1027ea3)</h3><ul>
+<li>Fix vocabulary and recording issues (7f31127)</li>
+<li>Improve vocabulary correction and recording context handling (e43058f)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-78aa19d/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="wBVsNQoj4aDIkIcdaPGCYUJYzGpUmM4jRWT2JRq8DjDbQYpqT+dRu4+SRKdHM8gAbSb1YN1spCntO7C9FnVoCg==" length="85528339"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-1027ea3/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="5xvC2shQPFIeW/hti/hLi1n0IpgQENncnUZSh83FwXXal7MoZ/vhXoFEOHeDjbjIlay5b6QPzBhmpQW7dkibBw==" length="85672338"/>
     </item>
   </channel>
 </rss>
