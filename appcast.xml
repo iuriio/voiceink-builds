@@ -3,18 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (3e31732)</title>
-      <pubDate>Thu, 29 Oct 2026 06:40:16 +0000</pubDate>
-      <sparkle:version>202610290549</sparkle:version>
-      <sparkle:shortVersionString>2.22 (3e31732)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (0b45b56)</title>
+      <pubDate>Thu, 29 Oct 2026 23:27:55 +0000</pubDate>
+      <sparkle:version>202610292245</sparkle:version>
+      <sparkle:shortVersionString>2.22 (0b45b56)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-3e31732</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (3e31732)</h3><ul>
-<li>Fix selected-text fallback and clipboard restoration (c1cf6ae2)</li>
-<li>Limit captured selected text to 2500 words (4798175f)</li>
-<li>Replace SelectedTextKit with in-house selection capture (def80de8)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-0b45b56</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (0b45b56)</h3><ul>
+<li>Preserve ready OCR context and restore Copy fallback on AX errors (7a3778d4)</li>
+<li>Fix context capture timing and add bounded menu Copy fallback (fefc558e)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-3e31732/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="TBICcxc288czJQp3F4vUxnJrHNFLruLlJdVhubJQKjTfJ2mrF8rVPtW6qtKZHLsvl8DMh0VwBWymcwVvi1wVAg==" length="85058699"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-0b45b56/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="IZryU2cmAx4Og2+xP4o31ZUtv4iLy+tgSSjI6U6t8GZ4WCCQQU9F4MiMqeqOeM2+g4AKJzmhgAHubIFuwldjAw==" length="85073908"/>
     </item>
   </channel>
 </rss>
