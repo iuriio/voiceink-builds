@@ -3,19 +3,21 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (19546d2)</title>
-      <pubDate>Fri, 30 Oct 2026 06:12:57 +0000</pubDate>
-      <sparkle:version>202610300550</sparkle:version>
-      <sparkle:shortVersionString>2.22 (19546d2)</sparkle:shortVersionString>
+      <title>VoiceInk 2.22 (9b2dd5a)</title>
+      <pubDate>Tue, 03 Nov 2026 15:03:35 +0000</pubDate>
+      <sparkle:version>202611031416</sparkle:version>
+      <sparkle:shortVersionString>2.22 (9b2dd5a)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-19546d2</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (19546d2)</h3><ul>
-<li>Delegate enhancement request retries to LLMkit (2ae599e6)</li>
-<li>Improve remote typing (18197293)</li>
-<li>Honor effective Auto Send key and restore typing compatibility warning (49d9b4a4)</li>
-<li>Add remote desktop typing paste method (13898c2d)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-9b2dd5a</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.22 (9b2dd5a)</h3><ul>
+<li>Repair capitalization and punctuation after filler removal (9b2dd5a0)</li>
+<li>Clarify Auto Learn correction behavior (f3ffdbdb)</li>
+<li>Simplify Auto-Learn controls and save manual review results (6fd1de71)</li>
+<li>Clarify German auto-learn review modes (5cda90f5)</li>
+<li>Add Auto-Learn review controls and reliability fixes (4ab97413)</li>
+<li>Improve auto-learn dictionary (416c227f)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-19546d2/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="INbm+pxc/0HQtHJQlWnw0JBAqsduAhM+s/FSGUWuwY1SebojgINbB0VTuh3a9X6JBtQCvYlapR/9UJ0zAvlQCA==" length="85092768"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-9b2dd5a/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="qjaXwqXWphkNrpRugb0SNAhd8rK0P9hykoYKviqGijg8yeH8fE5QP/eBdKQSLKA3QZoQsOuP7kqsW7hPzwmqAg==" length="85397041"/>
     </item>
   </channel>
 </rss>
