@@ -3,21 +3,23 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.22 (9b2dd5a)</title>
-      <pubDate>Tue, 03 Nov 2026 15:03:35 +0000</pubDate>
-      <sparkle:version>202611031416</sparkle:version>
-      <sparkle:shortVersionString>2.22 (9b2dd5a)</sparkle:shortVersionString>
+      <title>VoiceInk 2.25 (228f421)</title>
+      <pubDate>Wed, 04 Nov 2026 00:08:39 +0000</pubDate>
+      <sparkle:version>202611032323</sparkle:version>
+      <sparkle:shortVersionString>2.25 (228f421)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.22-9b2dd5a</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.22 (9b2dd5a)</h3><ul>
-<li>Repair capitalization and punctuation after filler removal (9b2dd5a0)</li>
-<li>Clarify Auto Learn correction behavior (f3ffdbdb)</li>
-<li>Simplify Auto-Learn controls and save manual review results (6fd1de71)</li>
-<li>Clarify German auto-learn review modes (5cda90f5)</li>
-<li>Add Auto-Learn review controls and reliability fixes (4ab97413)</li>
-<li>Improve auto-learn dictionary (416c227f)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.25-228f421</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.25 (228f421)</h3><ul>
+<li>Release version 2.25 (228f4217)</li>
+<li>Add diagnostics for automatic mode detection and trigger matching (be9ae87d)</li>
+<li>Fix Japanese localization wording (ecd2f2e6)</li>
+<li>Upgrade Soniox to v6 and migrate saved model selections (648b97ac)</li>
+<li>Add Japanese (ja) localization (2120bbe3)</li>
+<li>Decode trigger paths and reject malformed trigger ports (d5671a48)</li>
+<li>Keep path case, trailing slashes and ports out of trigger matching (f3b8815f)</li>
+<li>Anchor website trigger matching to the URL host (298025c1)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.22-9b2dd5a/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="qjaXwqXWphkNrpRugb0SNAhd8rK0P9hykoYKviqGijg8yeH8fE5QP/eBdKQSLKA3QZoQsOuP7kqsW7hPzwmqAg==" length="85397041"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.25-228f421/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="GlCxhcN543lP64p7E4PCQKFmCQrIbxfiylGefZOHFrZyfzAS5aOYAftNFHAZozVTv/m1G4Ren5xCAng0J2dfDA==" length="85483297"/>
     </item>
   </channel>
 </rss>
