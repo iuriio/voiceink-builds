@@ -3,17 +3,18 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.25 (5c95ff9)</title>
-      <pubDate>Wed, 04 Nov 2026 20:26:19 +0000</pubDate>
-      <sparkle:version>202611041945</sparkle:version>
-      <sparkle:shortVersionString>2.25 (5c95ff9)</sparkle:shortVersionString>
+      <title>VoiceInk 2.25 (7f93483)</title>
+      <pubDate>Fri, 06 Nov 2026 07:27:07 +0000</pubDate>
+      <sparkle:version>202611060646</sparkle:version>
+      <sparkle:shortVersionString>2.25 (7f93483)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.25-5c95ff9</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.25 (5c95ff9)</h3><ul>
-<li>Keep greeting layout unchanged in update checks fix (1f764d72)</li>
-<li>Restore Sparkle background update checks (c20af986)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.25-7f93483</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.25 (7f93483)</h3><ul>
+<li>Update localization catalog (7f934832)</li>
+<li>Update Swift dependencies and preserve retryable model downloads (390e8b26)</li>
+<li>Open recorders on the cursor display and retain placement until dismissed (f2c6563e)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.25-5c95ff9/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="dVGhLO5hGMioRsXGIEvn6SUIbu/b3A+o/fhJgwDRz0VEnF3CoAu7AX74kCpLKasK1eBUd6hfSEvHC4aZCyysDw==" length="85470589"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.25-7f93483/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="BQLDFDmZEjnExTy+SvDgmenTeZexz/q/9kzXhMFeICnkQyuCRmGwbJlJuoVVF9HDE9z9j/3S1c/uRnPun0pGDg==" length="71959555"/>
     </item>
   </channel>
 </rss>
