@@ -3,18 +3,17 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.25 (7f93483)</title>
-      <pubDate>Fri, 06 Nov 2026 07:27:07 +0000</pubDate>
-      <sparkle:version>202611060646</sparkle:version>
-      <sparkle:shortVersionString>2.25 (7f93483)</sparkle:shortVersionString>
+      <title>VoiceInk 2.25 (14f2c8f)</title>
+      <pubDate>Fri, 06 Nov 2026 20:08:58 +0000</pubDate>
+      <sparkle:version>202611061925</sparkle:version>
+      <sparkle:shortVersionString>2.25 (14f2c8f)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.25-7f93483</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.25 (7f93483)</h3><ul>
-<li>Update localization catalog (7f934832)</li>
-<li>Update Swift dependencies and preserve retryable model downloads (390e8b26)</li>
-<li>Open recorders on the cursor display and retain placement until dismissed (f2c6563e)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.25-14f2c8f</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.25 (14f2c8f)</h3><ul>
+<li>Fix streaming errors and update LLMkit (c60d20e6)</li>
+<li>Improve streaming transcription reliability (7ad56062)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.25-7f93483/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="BQLDFDmZEjnExTy+SvDgmenTeZexz/q/9kzXhMFeICnkQyuCRmGwbJlJuoVVF9HDE9z9j/3S1c/uRnPun0pGDg==" length="71959555"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.25-14f2c8f/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="Xnr88EX6oMyxjoj6CICDQw2zJCNYv+huEu2kWQ00d9brSbyjGwXsyay52QuuHjWtWCEuv/zdJOaLtpBUE8vqDA==" length="72123256"/>
     </item>
   </channel>
 </rss>
