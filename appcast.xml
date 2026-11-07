@@ -3,17 +3,16 @@
   <channel>
     <title>VoiceInk (self-built)</title>
     <item>
-      <title>VoiceInk 2.25 (14f2c8f)</title>
-      <pubDate>Fri, 06 Nov 2026 20:08:58 +0000</pubDate>
-      <sparkle:version>202611061925</sparkle:version>
-      <sparkle:shortVersionString>2.25 (14f2c8f)</sparkle:shortVersionString>
+      <title>VoiceInk 2.26 (4bc74ca)</title>
+      <pubDate>Sat, 07 Nov 2026 06:31:54 +0000</pubDate>
+      <sparkle:version>202611070558</sparkle:version>
+      <sparkle:shortVersionString>2.26 (4bc74ca)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.25-14f2c8f</sparkle:fullReleaseNotesLink>
-      <description><![CDATA[<h3>VoiceInk 2.25 (14f2c8f)</h3><ul>
-<li>Fix streaming errors and update LLMkit (c60d20e6)</li>
-<li>Improve streaming transcription reliability (7ad56062)</li>
+      <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.26-4bc74ca</sparkle:fullReleaseNotesLink>
+      <description><![CDATA[<h3>VoiceInk 2.26 (4bc74ca)</h3><ul>
+<li>Release 2.26 with Soniox and ElevenLabs streaming stability (4bc74cad)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.25-14f2c8f/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="Xnr88EX6oMyxjoj6CICDQw2zJCNYv+huEu2kWQ00d9brSbyjGwXsyay52QuuHjWtWCEuv/zdJOaLtpBUE8vqDA==" length="72123256"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.26-4bc74ca/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="cMLD0CYpS1aVd8l9BPfUps1/Pv3Opc41hlDlQe7NcumSxKXWE/iAjiijhyc8IF7+4tCcwahehMykdkIQoyJHBw==" length="72123378"/>
     </item>
   </channel>
 </rss>
