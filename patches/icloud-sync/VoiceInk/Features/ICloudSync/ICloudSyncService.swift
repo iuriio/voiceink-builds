@@ -103,7 +103,6 @@ final class ICloudSyncService: ObservableObject {
         "FillerWords",
         "AppendTrailingSpace",
         "IsVADEnabled",
-        "pasteMethod",
         "useAppleScriptPaste",
         "isSoundFeedbackEnabled",
         "CloudTranscriptionTimeout",
@@ -118,6 +117,9 @@ final class ICloudSyncService: ObservableObject {
         "enableAnnouncements",
         "dashboardDisplayName",
         "audioPlaybackRate",
+        // Auto-Learn reviewer; not part of the upstream backup since 2.25.
+        "AutoLearnDictionaryReviewerProvider",
+        "AutoLearnDictionaryReviewerModel",
     ]
     /// Per-provider model selections, e.g. "GroqSelectedModel" or "OpenAICustomModelID".
     private static let preferenceKeySuffixes = ["SelectedModel", "CustomModelID"]
@@ -518,11 +520,12 @@ final class ICloudSyncService: ObservableObject {
             isExperimentalFeaturesEnabled: defaults.bool(forKey: "isExperimentalFeaturesEnabled"),
             restoreClipboardAfterPaste: defaults.bool(forKey: "restoreClipboardAfterPaste"),
             clipboardRestoreDelay: defaults.double(forKey: "clipboardRestoreDelay"),
+            pasteMethod: PasteMethod.current().rawValue,
+            smartPunctuationEnabled: defaults.bool(forKey: SmartPunctuation.settingsKey),
             finishAndSendKey: FinishAndSendSettings.selectedKey.rawValue,
             isAutoLearnDictionaryEnabled: AutoLearnSettings.isEnabled,
-            autoLearnReviewSchedule: AutoLearnSettings.reviewSchedule.rawValue,
-            autoLearnProvider: AutoLearnSettings.selectedProvider?.rawValue,
-            autoLearnModel: AutoLearnSettings.selectedModel
+            autoLearnMinimumCorrections: AutoLearnSettings.minimumCorrections,
+            autoLearnAIReviewMode: AutoLearnSettings.aiReviewMode.rawValue
         )
     }
 

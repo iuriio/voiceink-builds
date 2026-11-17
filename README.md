@@ -12,7 +12,7 @@ Automated builds of [VoiceInk](https://github.com/Beingpax/VoiceInk) (GPL-3.0) f
   - `SUPublicEDKey` is this repo's Sparkle key
   - `CURRENT_PROJECT_VERSION` is a UTC timestamp, so every build is newer than the last
   - `Makefile`: `make local` gets `-destination 'generic/platform=macOS'` (Universal build)
-  - [`patches/icloud-sync`](patches/icloud-sync): adds iCloud Drive sync (below). If upstream moves the code it hooks into, the build falls back to plain upstream and the release notes say so.
+  - [`patches/icloud-sync`](patches/icloud-sync): adds iCloud Drive sync (below). If upstream moves the code it hooks into, the build falls back to plain upstream and the release notes say so. [`check-patch.yml`](.github/workflows/check-patch.yml) compiles upstream with the patch (no signing, no release) whenever `patches/` changes, or by hand against any upstream ref.
 - The app is signed with a stable self-signed certificate (`VoiceInk Local Signing`), so macOS keeps microphone/accessibility permissions across updates.
 - Each build publishes a release (`VoiceInk.zip` for Sparkle, `VoiceInk.dmg` for manual install) and commits the new `appcast.xml`. The last 10 releases are kept.
 - The installed app checks `appcast.xml` and shows the update in the Dashboard / "Check for Updates…".
@@ -21,8 +21,8 @@ Automated builds of [VoiceInk](https://github.com/Beingpax/VoiceInk) (GPL-3.0) f
 
 Upstream syncs the dictionary through CloudKit and API keys through iCloud Keychain, but both need an Apple Developer provisioning profile, so local builds have no sync. This build adds **Settings → iCloud Sync** instead, which syncs through one small file per section in `iCloud Drive/VoiceInk/Sync/` (VoiceInk is not sandboxed, so no entitlement is needed):
 
-- general settings and shortcuts, prompts, modes, dictionary and custom models, applied live exactly like *Import Settings*
-- AI provider choices and models, Ollama/custom provider settings, language, filler words, paste and enhancement options. These are applied when the app starts; after a remote change the section offers *Relaunch*.
+- general settings and shortcuts (including paste method and Smart Punctuation), prompts, modes, dictionary and custom models, applied live exactly like *Import Settings*
+- AI provider choices and models, Ollama/custom provider settings, the Auto-Learn reviewer, language, filler words and enhancement options. These are applied when the app starts; after a remote change the section offers *Relaunch*.
 - API keys, applied live, so a new Mac comes up already connected. They are stored unencrypted in `apiKeys.json`, protected only by your iCloud account (end-to-end encrypted if Advanced Data Protection is on).
 
 There is no polling: a Mac syncs at launch, on *Sync Now*, when an API key changes and when another Mac's upload lands in the folder (a file watch, idle otherwise). Other local edits go up on the next of those, or within 6 hours. Each part is last-writer-wins on its own. When you turn sync on, whatever another Mac already uploaded wins. Dictionary entries and API keys are merged, so deleting one on one Mac does not delete it on the others. Downloaded models, the selected transcription model, history and license stay per Mac.
