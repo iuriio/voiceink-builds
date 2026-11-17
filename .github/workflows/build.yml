@@ -140,11 +140,14 @@ jobs:
       - name: Build (make local)
         working-directory: upstream
         run: |
-          if make local LOCAL_CODESIGN_IDENTITY="$IDENTITY"; then
+          set -o pipefail
+          if make local LOCAL_CODESIGN_IDENTITY="$IDENTITY" 2>&1 | tee build.log; then
             echo "ICLOUD_SYNC=on" >> "$GITHUB_ENV"
           else
             # Upstream moved code the sync patch depends on: still ship the update, without sync.
             echo "::warning::Build with iCloud sync failed; building without it. Update patches/icloud-sync."
+            grep -E "\.swift:[0-9]+:[0-9]+: error:" build.log | sort -u | head -20 |
+              sed -E 's#^.*/upstream/##; s#^#::warning::#' || true
             git checkout -- VoiceInk/App/VoiceInk.swift VoiceInk/Features/Settings/Views/SettingsView.swift
             rm -rf VoiceInk/Features/ICloudSync
             make local LOCAL_CODESIGN_IDENTITY="$IDENTITY"
