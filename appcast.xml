@@ -4,29 +4,14 @@
     <title>VoiceInk (self-built)</title>
     <item>
       <title>VoiceInk 2.27 (b5d1be9)</title>
-      <pubDate>Wed, 11 Nov 2026 07:01:02 +0000</pubDate>
-      <sparkle:version>202611110621</sparkle:version>
+      <pubDate>Wed, 18 Nov 2026 00:38:16 +0000</pubDate>
+      <sparkle:version>202611180010</sparkle:version>
       <sparkle:shortVersionString>2.27 (b5d1be9)</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
       <sparkle:fullReleaseNotesLink>https://github.com/iuriio/voiceink-builds/releases/tag/v2.27-b5d1be9</sparkle:fullReleaseNotesLink>
       <description><![CDATA[<h3>VoiceInk 2.27 (b5d1be9)</h3><ul>
-<li>Release version 2.27 (b5d1be9a)</li>
-<li>Add Scribe V3 streaming support (27130058)</li>
-<li>Track dashboard window visibility with an AppKit view (7e28c013)</li>
-<li>Log the status when a Keychain presence check fails (1a730286)</li>
-<li>Use occlusion state for the dashboard visibility gate (54f32714)</li>
-<li>Cache only definite Keychain presence answers (e737bf3c)</li>
-<li>Skip the dashboard recent query while the window is hidden (c5996972)</li>
-<li>Stop re-evaluating every scene on engine updates (082d115b)</li>
-<li>Cache API key presence checks (077e51df)</li>
-<li>Make ScreenSleepPreventer synchronous and main-actor isolated (c9e2544d)</li>
-<li>Revert "Address Opus code review: add playbackSessionID guards around async hardware start suspension points in Recorder.swift" (f623c183)</li>
-<li>Address Opus code review: add playbackSessionID guards around async hardware start suspension points in Recorder.swift (306a1407)</li>
-<li>Address slow-model code review: unconditionally reset assertionID on release attempt to prevent permanent lockout (be0b29e3)</li>
-<li>Address code review feedback: call startPreventingSleep before hardware setup and retain assertionID on release failure (937295e5)</li>
-<li>Prevent display sleep and screen saver during active dictation/recording (dfa6a098)</li>
 </ul>]]></description>
-      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.27-b5d1be9/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="2StwXcYHvE/tGfJ5fJwkQgU3+Zop5wRL6qaH29w5glBqwwDUmcYAvcAqPy2/utSFTBNHD0Lz7N+u+c2F8dgtCQ==" length="72140825"/>
+      <enclosure url="https://github.com/iuriio/voiceink-builds/releases/download/v2.27-b5d1be9/VoiceInk.zip" type="application/octet-stream" sparkle:edSignature="GORttERIuJrS5pwggAyMsm3B3RAaeR6oMOQUZTDhV1I0zi7Yo8qTqG5JaplLnoTUiQtML3kweGL5xn3YYXJJAw==" length="72341922"/>
     </item>
   </channel>
 </rss>
